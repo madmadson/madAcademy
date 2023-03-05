@@ -1,4 +1,6 @@
 package de.madAcademy;
 
-public record Article(Long id, String name) {
+import org.springframework.data.annotation.Id;
+
+public record Article(@Id Long id, String article_name) {
 }
