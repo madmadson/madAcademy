@@ -1,2 +1,0 @@
-
-INSERT INTO ARTICLE(ID, ARTICLE_NAME) VALUES (99, 'Ich bin ein Test Article');

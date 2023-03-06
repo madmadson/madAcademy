@@ -1,7 +1,9 @@
 package de.madAcademy;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Article {
 
     @Id
