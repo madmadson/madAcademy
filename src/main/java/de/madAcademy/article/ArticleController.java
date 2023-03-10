@@ -1,4 +1,4 @@
-package de.madAcademy;
+package de.madAcademy.article;
 
 import java.util.Optional;
 
@@ -13,31 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/article")
 public class ArticleController {
 
-    @Autowired
+    private ArticleService service;
     private ArticleRepository repo;
 
-    @Autowired
-    private ArticleService service;
-
-    // public ArticleController(ArticleRepository repo) {
-    // this.repo = repo;
-    // }
+    public ArticleController(ArticleRepository repo, ArticleService service) {
+        this.repo = repo;
+        this.service = service;
+    }
 
     @GetMapping()
     public ResponseEntity<String> hello() {
 
-        return ResponseEntity.ok("Hello");
+        return ResponseEntity.ok(service.sayHEllo());
 
     }
 
     @GetMapping("/{requestedId}")
     public ResponseEntity<Article> findById(@PathVariable Long requestedId) {
 
-        if (requestedId.equals(1000L))
-            return ResponseEntity.notFound().build();
+        Optional<Article> maybeArticle = repo.findById(requestedId);
 
-        // Optional<Article> maybeArticle = repo.findById(requestedId);
-        Optional<Article> maybeArticle = Optional.of(new Article(99L, "lala"));
         if (maybeArticle.isPresent()) {
             return ResponseEntity.ok(maybeArticle.get());
         } else {

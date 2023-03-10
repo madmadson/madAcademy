@@ -1,4 +1,4 @@
-package de.madAcademy;
+package de.madAcademy.article;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

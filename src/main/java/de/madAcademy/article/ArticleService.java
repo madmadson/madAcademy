@@ -1,11 +1,11 @@
-package de.madAcademy;
+package de.madAcademy.article;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class ArticleService {
 
-    public void sayHEllo() {
-        System.out.println("hello");
+    public String sayHEllo() {
+        return "hello";
     }
 }

@@ -19,8 +19,19 @@ public class RestTest {
     TestRestTemplate restTemplate;
 
     @Test
-    void shouldReturnOk() {
-        ResponseEntity<String> response = restTemplate.getForEntity("/article/99", String.class);
+    void shouldReturnOkAlwaysThereArticle() {
+        ResponseEntity<String> response = restTemplate.getForEntity("/article/1", String.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+        DocumentContext documentContext = JsonPath.parse(response.getBody());
+        Number id = documentContext.read("$.id");
+        assertThat(id).isNotNull();
+    }
+
+    @Test
+    void shouldReturnOkOnInTestThereArticle() {
+        ResponseEntity<String> response = restTemplate.getForEntity("/article/2", String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -31,7 +42,7 @@ public class RestTest {
 
     @Test
     void shouldNotReturnAArticleWithAnUnknownId() {
-        ResponseEntity<String> response = restTemplate.getForEntity("/article/1000", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("/article/3", String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertThat(response.getBody()).isBlank();

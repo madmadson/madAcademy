@@ -1,4 +1,4 @@
-package de.madAcademy;
+package de.madAcademy.article;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
