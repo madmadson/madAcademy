@@ -3,9 +3,7 @@ package de.madAcademy.article;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArticleService {
+interface ArticleService {
 
-    public String sayHEllo() {
-        return "hello";
-    }
+    public String sayHEllo();
 }
