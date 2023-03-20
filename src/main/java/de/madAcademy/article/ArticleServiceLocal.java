@@ -14,6 +14,6 @@ public class ArticleServiceLocal implements ArticleService {
     @Override
     public String sayHEllo() {
         logger.info("local");
-        return "local";
+        return "local3";
     }
 }
