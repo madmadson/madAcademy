@@ -17,4 +17,5 @@ public class ArticleServiceImpl implements ArticleService {
 
         return "not local";
     }
+
 }

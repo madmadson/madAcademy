@@ -28,12 +28,12 @@ public class ArticleController {
     }
 
     @GetMapping("/{requestedId}")
-    public ResponseEntity<Article> findById(@PathVariable Long requestedId) {
+    public ResponseEntity<ArticleDto> findById(@PathVariable Long requestedId) {
 
         Optional<Article> maybeArticle = repo.findById(requestedId);
 
         if (maybeArticle.isPresent()) {
-            return ResponseEntity.ok(maybeArticle.get());
+            return ResponseEntity.ok(service.toDto(maybeArticle.get()));
         } else {
             return ResponseEntity.notFound().build();
         }
